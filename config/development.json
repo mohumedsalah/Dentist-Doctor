@@ -1,0 +1,7 @@
+{
+  "jwtPrivateKey": "1234",
+  "db": "mongodb://localhost:27017/density?authSource=admin",
+  "bcrypt": "1234",
+  "host": "http://localhost:8000/"
+  // "db": "mongodb://localhost:27017/v1?authSource=admin"
+}

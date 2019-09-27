@@ -1,0 +1,5 @@
+{
+  "jwtPrivateKey": "1234",
+  "db": "mongodb://user:admin123@ds127535.mlab.com:27535/interview-testing",
+  "bcrypt": "1234"
+}
