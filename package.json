@@ -8,7 +8,9 @@
     "test": "export NODE_ENV=test && nodemon --exec 'mocha  ./components/*/test/*/*.js ./'",
     "test_win": "SET NODE_ENV=test&& nodemon --exec \"mocha --timeout 15000  ./components/*/test/*/*.js ./\"",
     "lint": "eslint --fix . && echo 'Lint complete.'",
-    "watch": "watch 'clear && npm run -s test | tap-nirvana && npm run -s lint' src"
+    "watch": "watch 'clear && npm run -s test | tap-nirvana && npm run -s lint' src",
+    "postinstall": "npm install --prefix server",
+    "heroku-postbuild": "npm install --prefix clinet && npm run build --prefix clinet"
   },
   "devDependencies": {
     "eslint": "^6.4.0",
