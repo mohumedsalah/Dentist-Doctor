@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "export NODE_ENV=development && nodemon",
+    "start": "export NODE_ENV=development && node index.js",
     "test": "export NODE_ENV=test && nodemon --exec 'mocha  ./components/*/test/*/*.js ./'",
     "test_win": "SET NODE_ENV=test&& nodemon --exec \"mocha --timeout 15000  ./components/*/test/*/*.js ./\"",
     "lint": "eslint --fix . && echo 'Lint complete.'",
