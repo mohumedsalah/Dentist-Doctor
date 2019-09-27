@@ -7,7 +7,8 @@
     "node": "10.16.3"
   },
   "scripts": {
-    "start": "export NODE_ENV=development && node index.js",
+    "start": "export NODE_ENV=production&& node index.js",
+    "local": "export NODE_ENV=development&& node index.js",
     "test": "export NODE_ENV=test && nodemon --exec 'mocha  ./components/*/test/*/*.js ./'",
     "test_win": "SET NODE_ENV=test&& nodemon --exec \"mocha --timeout 15000  ./components/*/test/*/*.js ./\"",
     "lint": "eslint --fix . && echo 'Lint complete.'",
