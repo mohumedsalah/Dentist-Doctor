@@ -7,9 +7,11 @@ exports.addDoctor = async (req, res) => {
   });
   if (!error) {
     console.log(result);
-    return res.status(200).json(result);
+    return res.status(200).json({ result, code: 200, error: null });
   }
-  return res.status(error.statusCode).json(error.message);
+  return res
+    .status(error.statusCode)
+    .json({ result: null, code: error.statusCode, error: error.message });
 };
 
 exports.addPatient = async (req, res) => {
@@ -19,18 +21,22 @@ exports.addPatient = async (req, res) => {
   });
   if (!error) {
     console.log(result);
-    return res.status(200).json(result);
+    return res.status(200).json({ result, code: 200, error: null });
   }
-  return res.status(error.statusCode).json(error.message);
+  return res
+    .status(error.statusCode)
+    .json({ result: null, code: error.statusCode, error: error.message });
 };
 
 exports.signIn = async (req, res) => {
   const { error, result } = await userService.signInUser(req.body);
   if (!error) {
     console.log(result);
-    return res.status(200).json(result);
+    return res.status(200).json({ result, code: 200, error: null });
   }
-  return res.status(error.statusCode).json(error.message);
+  return res
+    .status(error.statusCode)
+    .json({ result: null, code: error.statusCode, error: error.message });
 };
 
 exports.getDoctorsList = async (req, res) => {
@@ -39,16 +45,20 @@ exports.getDoctorsList = async (req, res) => {
     console.log(result);
     return res.status(200).json(result);
   }
-  return res.status(error.statusCode).json(error.message);
+  return res
+    .status(error.statusCode)
+    .json({ result: null, code: error.statusCode, error: error.message });
 };
 
 exports.getDoctor = async (req, res) => {
   const { error, result } = await userService.oneDoctor(req.params.doctorId);
   if (!error) {
     console.log(result);
-    return res.status(200).json(result);
+    return res.status(200).json({ result, code: 200, error: null });
   }
-  return res.status(error.statusCode).json(error.message);
+  return res
+    .status(error.statusCode)
+    .json({ result: null, code: error.statusCode, error: error.message });
 };
 // exports.logIn = async (req, res) => {
 //   const { error, result } = await userService.logInUser(req.body);
