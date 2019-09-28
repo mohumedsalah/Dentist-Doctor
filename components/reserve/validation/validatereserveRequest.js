@@ -1,5 +1,6 @@
 const { ValidatorHelper, Builder } = require("validation-helpers");
 const _ = require("lodash");
+const moment = require("moment");
 const constant = require("../../users/constant");
 
 module.exports = req => {
@@ -7,17 +8,20 @@ module.exports = req => {
   const error = {};
 
   const scheme = {
-    day: {
-      value: obj.day,
-      rules: new Builder().required().isMember(constant.dayOfWeek).value
+    doctorId: {
+      value: req.params.doctorId,
+      rules: new Builder().required().isMongoObjectId()
     },
-    hour: {
-      value: obj.from,
-      rules: new Builder()
-        .required("Type must pass from date")
-        .isNumber()
-        .min(9)
-        .max(19).value
+    date: {
+      value: obj.date,
+      rules: new Builder().required().isDate().value
+    },
+    // "2010/10/20 1:00",
+    dayOfDate: {
+      value: moment(obj.date, "YYYY-MM-DD HH:mm")
+        .format("ddd")
+        .toLowerCase(),
+      rules: new Builder().required().isMember(constant.dayOfWeek)
     }
   };
 
