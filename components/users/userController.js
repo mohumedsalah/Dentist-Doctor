@@ -32,6 +32,24 @@ exports.signIn = async (req, res) => {
   }
   return res.status(error.statusCode).json(error.message);
 };
+
+exports.getDoctorsList = async (req, res) => {
+  const { error, result } = await userService.doctorsList(req.body);
+  if (!error) {
+    console.log(result);
+    return res.status(200).json(result);
+  }
+  return res.status(error.statusCode).json(error.message);
+};
+
+exports.getDoctor = async (req, res) => {
+  const { error, result } = await userService.oneDoctor(req.params.doctorId);
+  if (!error) {
+    console.log(result);
+    return res.status(200).json(result);
+  }
+  return res.status(error.statusCode).json(error.message);
+};
 // exports.logIn = async (req, res) => {
 //   const { error, result } = await userService.logInUser(req.body);
 //   if (!error) {

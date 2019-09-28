@@ -47,7 +47,7 @@ module.exports = ({ body }) => {
     let { errors, isValid } = ValidatorHelper(ele.value, ele.rules);
     if (ele.patientArray) {
       ele.value.forEach(element => {
-        const { errors: err } = validatePatientHistoryObj(element);
+        const { error: err } = validatePatientHistoryObj(element);
         if (err) {
           errors.push(err);
           isValid = false;

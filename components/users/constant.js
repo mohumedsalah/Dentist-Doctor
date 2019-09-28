@@ -1,5 +1,5 @@
 const constaint = {
-  dayOfWeek: ["sun", "mon", "tues", "wed", "thurs", "fri", "sat"],
+  dayOfWeek: ["sun", "mon", "tues", "wed", "thurs"],
   userType: ["doctor", "patient"],
   specifications: [
     "tooth-removal",

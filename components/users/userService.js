@@ -1,6 +1,7 @@
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const config = require("config");
+const mongoose = require("mongoose");
 const UserModel = require("./userModel");
 
 class UserService {
@@ -68,6 +69,46 @@ class UserService {
         config.get("jwtPrivateKey")
       );
       return { result: { token, userType: user.userType } };
+    } catch (err) {
+      return { error };
+    }
+  }
+
+  static async doctorsList(document) {
+    const error = { message: "error form database", statusCode: 500 };
+    try {
+      const doctors = await UserModel.findUserswithQuery({
+        clinic: document.clinic,
+        specify: document.specify
+      });
+      const result = doctors.map(doctor => {
+        return {
+          id: doctor._id,
+          fullName: doctor.fullName,
+          imageUrl: config.get("host") + doctor.image,
+          workingTime: doctor.workingTime
+        };
+      });
+      return { result };
+    } catch (err) {
+      return { error };
+    }
+  }
+
+  static async oneDoctor(doctorId) {
+    const error = { message: "error form database", statusCode: 500 };
+    try {
+      const doctor = await UserModel.findUser({
+        _id: mongoose.Types.ObjectId(doctorId)
+      });
+      const result = {
+        id: doctor._id,
+        fullName: doctor.fullName,
+        imageUrl: config.get("host") + doctor.image,
+        cost: doctor.cost,
+        workingTime: doctor.workingTime
+      };
+      return { result };
     } catch (err) {
       return { error };
     }

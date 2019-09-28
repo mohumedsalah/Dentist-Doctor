@@ -9,7 +9,7 @@ module.exports = obj => {
       value: obj.disease,
       rules: new Builder()
         .required("Type must pass from date")
-        .minLength(20)
+        .minLength(5)
         .maxLength(200).value
     },
     date: {

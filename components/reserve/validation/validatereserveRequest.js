@@ -1,8 +1,9 @@
 const { ValidatorHelper, Builder } = require("validation-helpers");
 const _ = require("lodash");
-const constant = require("../constant");
+const constant = require("../../users/constant");
 
-module.exports = obj => {
+module.exports = req => {
+  const obj = req.body;
   const error = {};
 
   const scheme = {
@@ -10,20 +11,12 @@ module.exports = obj => {
       value: obj.day,
       rules: new Builder().required().isMember(constant.dayOfWeek).value
     },
-    from: {
+    hour: {
       value: obj.from,
       rules: new Builder()
         .required("Type must pass from date")
         .isNumber()
         .min(9)
-        .max(19).value
-    },
-    to: {
-      value: obj.to,
-      rules: new Builder()
-        .required("Type must pass from date")
-        .isNumber()
-        .min(obj.from || 9)
         .max(19).value
     }
   };

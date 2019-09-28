@@ -1,5 +1,6 @@
 {
   "jwtPrivateKey": "1234",
   "db": "mongodb://user:admin123@ds127535.mlab.com:27535/interview-testing",
-  "bcrypt": "1234"
+  "bcrypt": "1234",
+  "host": "https://densitydoctor74.herokuapp.com/"
 }

@@ -11,6 +11,10 @@ class UserModel {
   static findUser(document) {
     return UserSchema.findOne(document).lean();
   }
+
+  static findUserswithQuery(query) {
+    return UserSchema.find(query).lean();
+  }
 }
 
 module.exports = UserModel;
