@@ -7,7 +7,7 @@ module.exports = async (req, res, next) => {
     config.get("jwtPrivateKey"),
     (err, value) => {
       if (!err) {
-        req.body.user = { ...value };
+        req.user = { ...value };
         return next();
       } else {
         return res.status(400).json("invalid token");

@@ -9,7 +9,7 @@ const validatereserveRequest = require("./validation/validatereserveRequest");
 const router = express.Router();
 
 router.post(
-  "/reserve-doctor/:doctorId",
+  "/doctor/:doctorId",
   [middlewareAuth, middlewareValidation(validatereserveRequest)],
   reserveController.postReservation
 );

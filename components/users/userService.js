@@ -29,7 +29,8 @@ class UserService {
       const token = jwt.sign(
         {
           identityNumber: result.identityNumber,
-          userType: result.userType
+          userType: result.userType,
+          _id: result._id
         },
         config.get("jwtPrivateKey")
       );
@@ -64,7 +65,8 @@ class UserService {
       const token = jwt.sign(
         {
           identityNumber: document.phone_number,
-          userType: user.userType
+          userType: user.userType,
+          _id: user._id
         },
         config.get("jwtPrivateKey")
       );

@@ -10,18 +10,19 @@ module.exports = req => {
   const scheme = {
     doctorId: {
       value: req.params.doctorId,
-      rules: new Builder().required().isMongoObjectId()
+      rules: new Builder().required().isMongoObjectId().value
     },
     date: {
       value: obj.date,
-      rules: new Builder().required().isDate().value
+      rules: new Builder().required().value
     },
     // "2010/10/20 1:00",
     dayOfDate: {
-      value: moment(obj.date, "YYYY-MM-DD HH:mm")
-        .format("ddd")
-        .toLowerCase(),
-      rules: new Builder().required().isMember(constant.dayOfWeek)
+      value:
+        moment(obj.date, "YYYY-MM-DD HH:mm")
+          .format("ddd")
+          .toLowerCase() || null,
+      rules: new Builder().required().isMember(constant.dayOfWeek).value
     }
   };
 
