@@ -14,4 +14,10 @@ router.post(
   reserveController.postReservation
 );
 
+router.get(
+  "/doctor-patients",
+  middlewareAuth,
+  reserveController.getDoctorPatients
+);
+
 module.exports = { router };

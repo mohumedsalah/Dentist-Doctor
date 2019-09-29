@@ -11,9 +11,10 @@ class ReserveModel {
 
   static getAllReservewithInDoctor(doctorId) {
     return reserveSchema
-      .find({ doctorId })
+      .find({ doctor: doctorId })
+      .sort({ date: -1 })
       .populate("patient")
-      .lear();
+      .lean();
   }
 }
 
