@@ -4,7 +4,7 @@ const userService = require("./userService");
 exports.addDoctor = async (req, res) => {
   //console.log(util.inspect(req, true, 3));
   const { error, result } = await userService.addingUser({
-    ...req.body,
+    ...req.query,
     userType: "doctor"
   });
   if (!error) {
