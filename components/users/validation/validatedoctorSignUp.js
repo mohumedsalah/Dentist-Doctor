@@ -1,11 +1,12 @@
 const { ValidatorHelper, Builder } = require("validation-helpers");
 const _ = require("lodash");
+const util = require("util");
 const validateWorkingDateObj = require("./validateWorkingDateObj");
 const constant = require("../constant");
 
 module.exports = req => {
   console.log("************************************");
-  console.log(JSON.stringify(req));
+  console.log(util.inspect(req, true, 100));
   req.body.image = !req.file ? null : req.file.path || null;
   req.body.workingTime = JSON.parse(req.body.workingTime) || null;
   const body = req.body;

@@ -1,7 +1,8 @@
+const util = require("util");
 const userService = require("./userService");
 
 exports.addDoctor = async (req, res) => {
-  console.log(req);
+  //console.log(util.inspect(req, true, 3));
   const { error, result } = await userService.addingUser({
     ...req.body,
     userType: "doctor"
