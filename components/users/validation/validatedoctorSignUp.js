@@ -4,6 +4,8 @@ const validateWorkingDateObj = require("./validateWorkingDateObj");
 const constant = require("../constant");
 
 module.exports = req => {
+  console.log("************************************");
+  console.log(JSON.stringify(req));
   req.body.image = !req.file ? null : req.file.path || null;
   req.body.workingTime = JSON.parse(req.body.workingTime) || null;
   const body = req.body;

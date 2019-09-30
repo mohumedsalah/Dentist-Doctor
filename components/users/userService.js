@@ -116,55 +116,17 @@ class UserService {
     }
   }
 
-  //   static async logInUser(document) {
-  //     const error = { message: "error form database", statusCode: 500 };
-  //     try {
-  //       const user = await UserModel.findOne({
-  //         phone_number: document.phone_number
-  //       });
-  //       if (!user) {
-  //         return {
-  //           error: { message: "This Phone not register", statusCode: 400 }
-  //         };
-  //       }
-  //       const ret = await bcrypt.compare(document.password, user.password);
-  //       if (!ret) {
-  //         return {
-  //           error: {
-  //             message: "Phone number of password not correct",
-  //             statusCode: 400
-  //           }
-  //         };
-  //       }
-  //       const token = jwt.sign(
-  //         {
-  //           phone_number: document.phone_number,
-  //           password: document.password
-  //         },
-  //         config.get("jwtPrivateKey")
-  //       );
-  //       return { result: { token } };
-  //     } catch (err) {
-  //       return { error };
-  //     }
-  //   }
-  //   static async addingStatusToUser(document) {
-  //     const error = { message: "error from database", statusCode: 500 };
-  //     try {
-  //       const user = await UserModel.findOne({
-  //         phone_number: document.user.phone_number
-  //       });
-  //       if (!user) {
-  //         return { error: { message: "error from database", statusCode: 500 } };
-  //       }
-  //       user.status = document.status;
-  //       const result = await user.save();
-  //       return { result: { status: result.status } };
-  //     } catch (err) {
-  //       console.log(err);
-  //       return { error };
-  //     }
-  //   }
+  static async addDiseaseForPatient(patientId, disease) {
+    const error = { message: "server internal error", statusCode: 500 };
+    try {
+      await UserModel.updateUser(patientId, {
+        $push: { patientHistory: disease }
+      });
+      return { result: "add disease success" };
+    } catch (err) {
+      return { error };
+    }
+  }
 }
 
 module.exports = UserService;

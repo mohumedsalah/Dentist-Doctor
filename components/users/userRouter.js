@@ -9,6 +9,8 @@ const validatepatientSignUp = require("./validation/validatepatientSignUp");
 const validateSignIn = require("./validation/validateSignIn");
 const validateListDocktorRequest = require("./validation/validateListDocktorRequest");
 const validateGetDoctorRequest = require("./validation/validateGetDoctorRequest");
+const validatePatientHistoryObj = require("./validation/validatePatientHistoryObj");
+const addDiseaseRequest = require("./validation/addDiseaseRequest");
 
 var upload = multer({ dest: "uploads/" });
 const router = express.Router();
@@ -42,6 +44,12 @@ router.get(
   "/doctor-info/:doctorId",
   [middlewareAuth, middlewareValidation(validateGetDoctorRequest)],
   userController.getDoctor
+);
+
+router.post(
+  "/addDisease/:patientId",
+  [middlewareAuth, middlewareValidation(addDiseaseRequest)],
+  userController.addDisease
 );
 
 // router.post(

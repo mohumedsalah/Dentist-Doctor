@@ -15,6 +15,10 @@ class UserModel {
   static findUserswithQuery(query) {
     return UserSchema.find(query).lean();
   }
+
+  static updateUser(userId, query) {
+    return UserSchema.updateOne({ _id: userId }, query);
+  }
 }
 
 module.exports = UserModel;
