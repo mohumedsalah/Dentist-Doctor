@@ -79,7 +79,6 @@ class ReserveService {
   static async doctorPatients(doctorId) {
     const error = { message: "error from database", statusCode: 500 };
     try {
-      console.log("**********************");
       const patients = await ReserveModel.getAllReservewithInDoctor(doctorId);
       console.log(patients);
       const result = patients.map(p => {

@@ -3,7 +3,7 @@ const _ = require("lodash");
 const constant = require("../constant");
 
 module.exports = req => {
-  const body = req.body;
+  const body = req.query;
   const error = {};
   const scheme = {
     clinic: {
