@@ -42,7 +42,7 @@ exports.signIn = async (req, res) => {
 };
 
 exports.getDoctorsList = async (req, res) => {
-  const { error, result } = await userService.doctorsList(req.body);
+  const { error, result } = await userService.doctorsList(req.query);
   if (!error) {
     console.log(result);
     return res.status(200).json(result);
